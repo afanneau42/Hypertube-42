@@ -48,7 +48,7 @@ const getComments = (req, res) => {
         .find({ movie_id: id })
         .sort({ date: -1 })
         .exec((err, doc) => {
-            console.log('get comments', doc);
+            // console.log('get comments', doc);
             if (!doc[0])
                 res.send({ error: true })
             else

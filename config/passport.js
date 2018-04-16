@@ -41,7 +41,7 @@ passport.use(new LinkedInStrategy({
         const token = jwt.sign({id: user._id}, config.secret,{
             expiresIn: 86400 // expires in 24 hours
           });
-      console.log(token);
+    //   console.log(token);
       return done(err, user, token);
   
     });
@@ -72,7 +72,7 @@ passport.use(new DropboxOAuth2Strategy({
         const token = jwt.sign({id: user._id}, config.secret,{
             expiresIn: 86400 // expires in 24 hours
           });
-      console.log(token);
+    //   console.log(token);
       return done(err, user, token);
   
     });
@@ -103,7 +103,7 @@ var fname = name.split(" ");
         const token = jwt.sign({id: user._id}, config.secret,{
             expiresIn: 86400 // expires in 24 hours
           });
-      console.log(token);
+    //   console.log(token);
       return cb(err, user, token);
   
     });
@@ -135,7 +135,7 @@ passport.use(new GitHubStrategy({
       const token = jwt.sign({id: user._id}, config.secret,{
           expiresIn: 86400 // expires in 24 hours
         });
-    console.log(token);
+    // console.log(token);
     return cb(err, user, token);
 
     });
@@ -166,7 +166,7 @@ function (accessToken, refreshToken, profile, cb) {
         const token = jwt.sign({id: user._id}, config.secret,{
             expiresIn: 86400 // expires in 24 hours
           });
-      console.log(token);
+    //   console.log(token);
       return cb(err, user, token);
   
       });

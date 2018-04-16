@@ -96,10 +96,10 @@ router.post('/register', [
           // });
           if (err) return res.status(200).send({ auth:false, err:"There was a problem creating the user."});
           if (user){return res.status(200).send({auth:true});
-          console.log("success")
+          // console.log("success")
         }
           else return res.status(200).send({ auth:false});
-          console.log("fail")
+          // console.log("fail")
         });
     }
   });
@@ -120,14 +120,14 @@ router.get('/me', VerifyToken, function (req, res, next) {
 router.post('/forgot', [
   body('email', 'Email must be valid').exists().isEmail(),
 ], (req, res, next) => {
-  console.log(req.body)
+  // console.log(req.body)
   // Get the validation result whenever you want; see the Validation Result API for all options!
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(200).json({ errors: errors.mapped() });
   }
 
-  console.log(req.body);
+  // console.log(req.body);
   var Password = generatePassword(8, false);
   // console.log(Password);
   // console.log(hashedPassword);
@@ -148,9 +148,9 @@ router.post('/forgot', [
 
         mailsender.sendMail(mailOptions, (error, info) => {
           if (error) {
-            return console.log(error);
+            return ;
           }
-          console.log('Message %s sent: %s', info.messageId, info.response);
+          // console.log('Message %s sent: %s', info.messageId, info.response);
         });
 
         res.status(200).send("Password updated");

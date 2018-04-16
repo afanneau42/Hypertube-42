@@ -68,7 +68,7 @@ app.get('/api/auth/login/github', function (req, res, next) {
     function (err, user, token) {
       if (token && token.split) {
         const jwtToken = token.split('.');
-        console.log(jwtToken);
+        // console.log(jwtToken);
         return res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
       }
       // else return res.status(200).send({auth: false});
@@ -83,8 +83,8 @@ app.get('/api/auth/login/42', function (req, res, next) {
     function (err, user, token) {
       if (token && token.split) {
         const jwtToken = token.split('.');
-        console.log(token);
-        console.log(jwtToken);
+        // console.log(token);
+        // console.log(jwtToken);
         res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);  //res.status(200).send({token: token});
       }
       // else return res.status(200).send({ auth: false });
@@ -97,8 +97,8 @@ app.get('/api/auth/login/facebook', function (req, res, next) {
     function (err, user, token) {
       if (token && token.split) {
         const jwtToken = token.split('.');
-        console.log(token);
-        console.log(jwtToken);
+        // console.log(token);
+        // console.log(jwtToken);
         res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
       }
       // else return res.status(200).send({ auth: false });
@@ -112,8 +112,8 @@ app.get('/api/auth/login/dropbox', function (req, res, next) {
     function (err, user, token) {
       if (token && token.split) {
         const jwtToken = token.split('.');
-        console.log(token);
-        console.log(jwtToken);
+        // console.log(token);
+        // console.log(jwtToken);
         res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
         //res.status(200).send({token: token});
       }
@@ -126,8 +126,8 @@ app.get('/api/auth/login/linkedin', function (req, res, next) {
   passport.authenticate('linkedin', function (err, user, token) {
     if (token && token.split) {
       const jwtToken = token.split('.');
-      console.log(token);
-      console.log(jwtToken);
+      // console.log(token);
+      // console.log(jwtToken);
       res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);  //res.status(200).send({token: token});
     }
     // else return res.status(200).send({ auth: false });

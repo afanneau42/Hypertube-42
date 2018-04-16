@@ -21,10 +21,6 @@ router.get('/translate', (req, res) => {
     let { str, lang } = req.query;
 
     translate(str, { to: lang }).then(ret => {
-        console.log(ret.text);
-        //=> I speak English
-        console.log(ret.from.language.iso);
-        //=> nl
         res.send(ret.text);
     }).catch(err => {
         console.error(err);

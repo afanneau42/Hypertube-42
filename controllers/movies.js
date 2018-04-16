@@ -197,7 +197,7 @@ const isUploaded = (id) => {
 const getMovies = (req, res) => {
     var jwtToken = req.headers['x-access-token'];
     let { page, sort_by, sort_order, f_title, f_rating_min, f_rating_max, f_genre, f_year_min, f_year_max, f_suggest } = req.query
-    console.log(page)
+    // console.log(page)
     var re = new RegExp(f_title, "i");
     let sort = {};
     sort_by ? sort[sort_by] = sort_order ? sort_order : 1 : sort['title'] = sort_order ? sort_order : 1;
@@ -262,15 +262,15 @@ const updateMoviePath = (movieId, filePath) => { // Find a movie update uploaded
     // }
     Movies
         .findOneAndUpdate({ _id: oId(movieId) }, { $set: { uploaded: 1, file_path: filePath } }, (err, doc) => {
-            if (err)
-                console.log(err);
+            // if (err)
+                // console.log(err);
             console.log('File ' + doc.title + ' saved at ' + filePath);
             return;
         });
 }
 
 const movieWatched = (req, res) => {
-    console.log('\n\n\n\n MOVIE WATCHED')
+    // console.log('\n\n\n\n MOVIE WATCHED')
     var jwtToken = req.headers['x-access-token'];
     if (!jwtToken)
         return res.status(200).send({ message: 'No token provided.' });
@@ -278,10 +278,10 @@ const movieWatched = (req, res) => {
         if (!err && decoded && decoded.id) {
             Movies
                 .findOneAndUpdate({ _id: oId(req.query.movie_id) }, { $push: { history: decoded.id } }, (err, doc) => {
-                    if (err)
-                        console.log(err);
+                    // if (err)
+                        // console.log(err);
                     resetTimer(req.query.movie_id);
-                    console.log('User ' + decoded.id + ' watched');
+                    // console.log('User ' + decoded.id + ' watched');
                     return res.status(200).send({ message: 'History succefully updated.' });
                 });
         }

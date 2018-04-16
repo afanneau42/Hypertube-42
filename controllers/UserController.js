@@ -43,7 +43,7 @@ router.put('/:id', [
     jwt.verify(jwtToken, config.secret, function (err, decoded) {
         if (!err && decoded && decoded.id) {
             if (req.params.id == decoded.id) {
-                console.log(req.body)
+                // console.log(req.body)
                 User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, user) {
                     if (err) return res.status(200).send("There was a problem updating the user.");
                     res.status(200).send(user);
