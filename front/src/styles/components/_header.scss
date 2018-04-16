@@ -1,0 +1,91 @@
+.header {
+    background: $color-xl;
+    margin-bottom: $s-size;
+    padding: $s-size 0;
+    color: $color-s;
+    height: 90px;
+}
+
+.header__title {
+    color: white;
+    font-size: $l-size;
+    margin: 0;
+    font-weight: bold;
+    line-height: 66px;
+    transition: text-shadow 0.5s ease;
+}
+
+.header__title:hover {
+    text-shadow: inset 0px 0px 20px #888;
+}
+
+.header_right {
+    position: relative;
+    left: 0;
+}
+
+.header_login {
+    color: #ddd;
+}
+
+.header_login h2 {
+    margin-bottom: 0;
+    margin-top: 10%;
+    text-align: center;
+    line-height: 100%;
+}
+
+.header__subtitle {
+    color: $off-white;
+    font-weight: 500;
+    font-size: $m-size;
+}
+
+.flag_lang:hover {
+    cursor: pointer;
+}
+
+.header a:hover {
+    color: none;
+}    
+
+.konami_div {
+    display: flex;
+    position: fixed;
+    z-index: 50;
+    left: -100vw;
+    width: 100vw;
+    transition: left 2s ease-out;
+    left: 0vw; 
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 100vh;
+    animation: left_to_right 2s 0s ease-out;    
+}
+
+@keyframes left_to_right {
+    from {
+        left: -100vw;
+    } to {
+        left: 0;
+    }
+}
+
+@keyframes wave {
+    from { transform : translateY(0); }
+    to   { transform : translateY(-10px); }
+}
+
+.konami_div img {
+    animation: wave infinite 0.3s alternate;        
+    margin: auto;
+    border-radius: 100%;
+    height: 20vh; 
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .header {
+        margin-bottom: $xl-size;
+        padding: $m-size 0;
+    }
+}

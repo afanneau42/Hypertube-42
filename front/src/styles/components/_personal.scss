@@ -1,0 +1,38 @@
+.div-language-flags {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    animation: all 0.3s ease-in-out;
+}
+
+.flag_active {
+    opacity: 1.5;
+    transform: scale3d(1.2, 1.2, 1.2);
+    border: solid 1px white;
+    border-radius: 2px;
+}
+
+.flag_inactive {
+    opacity: 0.5;
+}
+
+.personal-input-language {
+    margin-top: 30px;
+    margin: auto;
+    margin-bottom: 30px;
+    background-color: #2d3038;
+    color: #d5d3d7;
+    display: none;
+}
+
+.flag_inactive:hover {
+    transform: scale3d(1.2, 1.2, 1.2);
+    opacity: 1;
+    cursor: pointer;
+}
+
+.flag_active:hover {
+    cursor: pointer;
+    
+}
+

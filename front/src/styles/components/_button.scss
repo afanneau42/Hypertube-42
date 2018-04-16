@@ -1,0 +1,46 @@
+// @import '../base/_settings';
+.big-button {
+    transition: 0.5s ease-in-out;
+    border-radius: 1rem;
+    background-color: $color-m;
+    border: none;
+    border-bottom: .6rem solid darken($color-m, 10%);
+    color: white;
+    font-weight: bold;
+    font-size: $l-size;
+    width: 100%;
+    margin-bottom: $s-size;
+    padding: $s-size;
+}
+
+.big-button:disabled {
+    transition: 0.5s;
+    opacity: .5;
+    cursor: default;
+}
+
+.button {
+    border-radius: 0.5rem;
+    background-color: $color-m;
+    border: none;
+    font-weight: 500;
+    border-bottom: .3rem solid darken($color-m, 10%);
+    color: white;
+    padding: $s-size;
+}
+
+
+.button__link {
+    background: none;
+    border: none;
+    color: $off-white;
+    padding: 0 ;
+
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .big-button {
+        margin-bottom: $xl-size;
+        padding: 2.4rem;
+    }
+}

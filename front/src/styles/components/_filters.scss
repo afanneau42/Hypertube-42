@@ -1,0 +1,130 @@
+.filters p {
+    color: #aaa;
+}
+
+.filters {
+    text-align: center;
+}
+
+.filters-div-before {
+    height: 0px;
+    opacity: 0;
+    margin-bottom: 0;
+}
+
+.filters-div-after {
+    height: 250px;
+    opacity: 1;
+}
+
+button {
+    width: 50px;
+    height: 50px;  
+    margin: auto;  
+}
+
+.filters-bar h2 {
+    text-align: center;
+}
+
+button:focus {outline:0;}
+
+.filters-div {
+    margin-left: 25px;
+    margin-right: 25px;    
+    // display: none;
+    border: solid 2px rgb(0, 173, 181);
+    box-shadow: 0px 5px 0px rgb(0, 124, 130);
+    border-radius: 20px;
+    padding: 15px;
+    background-color: rgba(51, 55, 68, 0.65);
+    margin-bottom: 20px;
+    color: #ddd;
+    overflow-y: hidden;
+    transition: all 0.5s ease-out;
+}
+
+.filters-bar-value-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    transform: rotate(90deg);
+    transition: all 0.5s ease-out;
+    border-right: 0.3rem solid #007c82;
+    border-bottom: 0;
+    
+}
+
+.button-after {
+    transform: rotate(0deg); 
+    border-bottom: 0.3rem solid #007c82;
+    border-right: 0;
+    
+}
+
+.div-sort {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    color: #aaa;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.genre-filter {
+    margin: auto;
+}
+
+@media screen and (min-width: 500px) {
+    .filters-bar {
+        margin: 25px;
+        width: 25%;
+    }
+
+    .div-filters-bar{
+        margin-top: 50px;
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .div-sort {
+        margin-top: 10px;
+    }
+
+    .div-sort span {
+        width: 100%;
+    }
+
+    .div-filters-bar {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .filters-div-after {
+        height: 400px;   
+    }
+
+    .filters-bar {
+        margin: 20px auto 20px auto;
+        width: 200px;
+    }
+
+    .genre-filter {
+        margin: auto;
+        color: #ddd;
+        background-color: #777;
+        border: solid 2px #AAA;
+        box-shadow: 0px 5px 0px #555;
+        border-radius: 20px;
+
+    }
+
+    .genre-filter select {
+        color: #ddd;
+    }
+}

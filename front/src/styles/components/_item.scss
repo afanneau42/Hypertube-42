@@ -1,0 +1,138 @@
+.item {
+    color: #ddd;
+}
+
+.movie_title {
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 20px;
+}
+
+.movie_year {
+    opacity: 0.75;
+    font-size: 20px;    
+}
+
+.movie_rating {
+    font-size: 20px;    
+    color: rgb(255,215,0);
+    margin: auto;
+}
+
+.movie_image {
+    width: 287px;
+    height: 431px;
+}
+
+.movie_rating {
+    text-align: right;
+}
+
+.movie_title_div {
+    min-width: 287px;
+    text-align: center;
+    
+}
+
+.title_and_year {
+    flex: 1;
+}
+
+.movie_image {
+    margin: auto;
+    display: block;
+    box-shadow: #111 0px 0px 25px;
+    border-radius: 2px;
+}
+
+.movie_rating {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.movie_info {
+    opacity: 0.75;
+    // font-size: 0.8vw;
+}
+
+.movie_synopsis {
+    opacity: 0.9;
+}
+
+.div_movie_watch_link {
+    text-align: center;
+    display: flex;
+    height: 267px;
+    width: 100%; 
+}
+
+.div_movie_watch_link a {
+    margin: auto;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltipText {
+    // visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.vjs-progress-control {
+    opacity: 0;
+    cursor: default;
+    z-index: -2;
+}
+
+@media screen and (max-width : 992px) {
+    .item {
+        padding-left: 8vw; 
+        padding-right: 8vw;         
+    }
+}
+
+@media screen and (max-width : 992px) {
+    .item {
+        padding-left: 5vw; 
+        padding-right: 5vw;     
+    }
+
+    .movie_image {
+        margin-bottom: 1vh;
+    }
+
+    .movie_info,.movie_synopsis{
+        text-align: center;
+    }
+}

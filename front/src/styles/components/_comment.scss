@@ -1,0 +1,80 @@
+.comment-textarea {
+    width: 85%;
+    height: 50px;
+    margin: 5px;
+    background-color: rgb(45, 48, 56);
+    border: 0;
+    // border-bottom: solid 1px white;
+    color: #ffffffcc;
+    border-radius: 2px;
+}
+
+.comment-button {
+    width: 10%;
+    min-width: 100px;
+    
+    height: 50px;
+    color: white;
+    background-color: $color-background-2nd;
+    border: $border-2nd;
+    border-radius: $border-radius-2nd;
+    letter-spacing: 2px;
+    opacity: 0.75;
+    font-size: 0.75em;
+    transition: all 0.3s ease-in-out;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comment-button:hover {
+    opacity: 1;
+}
+
+.comment-input-div {
+    width: 100%;
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.comment-div-info {
+    display: flex;
+    max-width: 350px;
+    padding-right: 10px;
+    padding-left: 10px;
+    
+}
+
+.comment-div-info div {
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.comment-div-info span {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 5px;
+    overflow-wrap: break-word;
+    width: 100px;
+}
+
+.comment-text {
+    overflow-wrap: break-word;
+    font-size: 0.8em;
+}
+
+.comment-div {
+    background-color: $color-background-2nd;
+    border-radius: 10px;
+    color: #e6e6e6;
+    padding: 0.2em;
+    display: flex;
+    flex-direction: rows;
+    margin-top: 7px;
+    // border: "2px solid black"
+}
+

@@ -1,0 +1,8 @@
+.laListe-appear {
+    opacity: 0.01;
+}
+
+.laListe-appear.laListe-appear-active {
+   opacity: 1;
+   transition: opacity .5s ease-in; 
+}
