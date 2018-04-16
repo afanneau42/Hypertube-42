@@ -282,7 +282,7 @@ const downloadSubtitles = (lang, imdb_id, res) => {
         let subs = results[Object.keys(results)[0]]
         console.log();
         if (!subs)
-            res.send('KO')
+            res.send('No subtitles found in' + lang)
         var url = subs.url;
 
         let filename = imdb_id + '_' + lang;
@@ -301,6 +301,9 @@ const downloadSubtitles = (lang, imdb_id, res) => {
             res.send('OK');
         })
 
+    }).catch((err) => {
+        if (err)
+            res.send(err);
     })
 }
 
