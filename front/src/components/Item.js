@@ -43,7 +43,7 @@ class Item extends Component {
         if (lang !== 'en' && !translated && a && b) {
             this.props.dispatch(getVersion(lang, { synopsis, genre }));
         }
-        if (nextProps.movie.imdb_id != undefined && this.state.en_subs === false) {
+        if (seeds && seeds > 200 && nextProps.movie.imdb_id != undefined && this.state.en_subs === false) {
             console.log("COUCOU IMnextProps.DB", nextProps.movie.imdb_id)
             const url = `${config.connectUrl}/api/video/subtitles?movie_id=${this.props.match.params.id}&imdb_id=${nextProps.movie.imdb_id}&lang=`;
             axios.get(url + 'ge').then((res) => {
