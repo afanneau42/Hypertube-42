@@ -37,7 +37,7 @@ function register(user) {
                     // localStorage.setItem('jwtToken', token)
                 }
             })
-            .catch(error => console.log('register error', error))
+            .catch()
     };
 }
 
