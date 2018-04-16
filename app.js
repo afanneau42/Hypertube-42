@@ -87,7 +87,8 @@ app.get('/api/auth/login/42', function (req, res, next) {
         console.log(jwtToken);
         res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);  //res.status(200).send({token: token});
       }
-      else return res.status(200).send({ auth: false });
+      // else return res.status(200).send({ auth: false });
+      else return res.redirect(`http://localhost:8080/login/oAuth=false`)
     })(req, res, next);
 });
 
@@ -100,8 +101,8 @@ app.get('/api/auth/login/facebook', function (req, res, next) {
         console.log(jwtToken);
         res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
       }
-      else return res.status(200).send({ auth: false });
-
+      // else return res.status(200).send({ auth: false });
+      else return res.redirect(`http://localhost:8080/login/oAuth=false`)
       //    res.status(200).send({token: token});
     })(req, res, next);
 });
@@ -116,7 +117,8 @@ app.get('/api/auth/login/dropbox', function (req, res, next) {
         res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
         //res.status(200).send({token: token});
       }
-      else return res.status(200).send({ auth: false });
+      // else return res.status(200).send({ auth: false });
+      else return res.redirect(`http://localhost:8080/login/oAuth=false`)
     })(req, res, next);
 });
 
@@ -128,7 +130,8 @@ app.get('/api/auth/login/linkedin', function (req, res, next) {
       console.log(jwtToken);
       res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);  //res.status(200).send({token: token});
     }
-    else return res.status(200).send({ auth: false });
+    // else return res.status(200).send({ auth: false });
+    else return res.redirect(`http://localhost:8080/login/oAuth=false`)
   })(req, res, next);
 });
 var AuthController = require('./controllers/AuthController');
