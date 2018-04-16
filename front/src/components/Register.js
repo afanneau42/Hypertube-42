@@ -140,7 +140,7 @@ class Register extends React.Component {
     const { user, submitted, errors } = this.state;
     const { loading, language, error } = this.props;
     error ? setTimeout(() =>
-      this.props.dispatch(userActions.resetGreetings()))
+      this.props.dispatch(userActions.resetGreetings()), 3000)
       : null;
     return (
       <div className="jumbotron div-register">
@@ -245,6 +245,7 @@ class Register extends React.Component {
               errors.map((error, index) => <div key={index}>{error}</div>) :
               <div></div>
           }
+          {error && <div className="alert alert-danger">{error}</div>}
         </form>
       </div>
     );

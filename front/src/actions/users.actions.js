@@ -32,8 +32,9 @@ function register(user) {
                 }
                 else {
                     const error = res.data.err
-                    dispatch(failure(res.data.err));
-                    console.log(res.data);
+                    console.log(error);
+                    dispatch(failure(error));
+                    console.log(res);
                     // localStorage.setItem('jwtToken', token)
                 }
             })

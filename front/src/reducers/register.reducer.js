@@ -1,7 +1,7 @@
 import { userConstants } from "../constantes";
 
 const defaultState = {
-  error: false,
+  error: '',
   success: false,
   loading: false
 };
@@ -13,7 +13,10 @@ export default (state = defaultState, action) => {
     case userConstants.REGISTER_SUCCESS:
       return { loading: false, success: true };
     case userConstants.REGISTER_FAILURE:
-      return { loading: false, error: true };
+      return {
+        loading: false,
+        error: action.error
+      };
     case 'RESET_GREETINGS':
       return {
         ...defaultState
