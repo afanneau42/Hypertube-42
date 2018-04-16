@@ -29,6 +29,7 @@ export default (state = userInitialState, action) => {
       return {
         ...state,
         error: true
+
       }
     }
 
