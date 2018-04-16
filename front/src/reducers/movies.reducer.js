@@ -59,6 +59,7 @@ export default (state = movieDefaultState, action) => {
         ...state,
         moviesList: newMovieList,
         loading: false,
+        error: false
       };
 
     case moviesConstants.MOVIES_FAILURE:

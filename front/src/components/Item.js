@@ -28,10 +28,6 @@ class Item extends Component {
         }
     }
 
-    componentDidMount() { 
-        
-      }
-
     componentWillReceiveProps(nextProps) {
         const { lang, translated } = nextProps.language;
         const { synopsis, genre, history } = nextProps.movie;
@@ -50,29 +46,29 @@ class Item extends Component {
             console.log("COUCOU IMnextProps.DB", nextProps.movie.imdb_id)
             const url = `${config.connectUrl}/api/video/subtitles?movie_id=${this.props.match.params.id}&imdb_id=${nextProps.movie.imdb_id}&lang=`;
             axios.get(url + 'ge').then((res) => {
-                console.log('ge',res)
+                console.log('ge', res)
                 if (res.data === 'OK' && this._ismounted)
-                    this.state.ge_subs !== undefined ? this.setState({...this.state, ge_subs: true}) : 0;
+                    this.state.ge_subs !== undefined ? this.setState({ ...this.state, ge_subs: true }) : 0;
             }).catch()
             axios.get(url + 'sp').then((res) => {
-                console.log('sp',res)
+                console.log('sp', res)
                 if (res.data === 'OK' && this._ismounted)
-                    this.state.sp_subs !== undefined ? this.setState({...this.state, sp_subs: true}) : 0;
-                
+                    this.state.sp_subs !== undefined ? this.setState({ ...this.state, sp_subs: true }) : 0;
+
                 // this.setState({...this.state, sp_subs: true})
             }).catch(e => console.log("ERREUR"))
             axios.get(url + 'en').then((res) => {
-                console.log('en',res)
+                console.log('en', res)
                 if (res.data === 'OK' && this._ismounted)
-                    this.state.en_subs !== undefined ? this.setState({...this.state, en_subs: true}) : 0;
-                
+                    this.state.en_subs !== undefined ? this.setState({ ...this.state, en_subs: true }) : 0;
+
                 // this.setState({...this.state, en_subs: true})
             }).catch()
             axios.get(url + 'fr').then((res) => {
-                console.log('fr',res)
+                console.log('fr', res)
                 if (res.data === 'OK' && this._ismounted)
-                    this.state.fr_subs !== undefined ? this.setState({...this.state, fr_subs: true}) : 0;
-                
+                    this.state.fr_subs !== undefined ? this.setState({ ...this.state, fr_subs: true }) : 0;
+
                 // this.setState({...this.state, fr_subs: true})
             }).catch()
         }
@@ -86,9 +82,9 @@ class Item extends Component {
 
     }
 
-    componentDidMount() { 
+    componentDidMount() {
         this._ismounted = true;
-      }
+    }
 
     componentWillUnmount() {
         this._ismounted = false;
@@ -170,7 +166,7 @@ class Item extends Component {
                 type: 'video/mp4'
             }]
         }
-        
+
         return (
             < div className="item" >
                 {/* {loading ? <div class="loader"></div> : */}
@@ -236,14 +232,14 @@ class Item extends Component {
 
                                 :
 
-                                    this.state.quality === inter[lang].itemPage.slow ?
-                                        <div className="div_movie_watch_link">
-                                            <span>Not enough seeders 🙈</span>
-                                        </div>
+                                this.state.quality === inter[lang].itemPage.slow ?
+                                    <div className="div_movie_watch_link">
+                                        <span>Not enough seeders 🙈</span>
+                                    </div>
                                     :
-                                        <div className="div_movie_watch_link">
-                                            <a href='#' onClick={this.watchMovie}>Watch the movie</a>
-                                        </div>
+                                    <div className="div_movie_watch_link">
+                                        <a href='#' onClick={this.watchMovie}>Watch the movie</a>
+                                    </div>
                         }
                     </div>
                     <div>
