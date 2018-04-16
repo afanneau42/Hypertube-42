@@ -20,6 +20,7 @@ class List extends React.Component {
         justArrived ?
             setTimeout(() => this.props.dispatch(userActions.resetGreetings()), 4000)
             : null;
+
     }
 
     componentWillUnmount() {

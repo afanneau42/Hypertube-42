@@ -41,7 +41,7 @@ app.use(morgan());
 
 app.use(flash());
 
-app.use(bParser.json({limit: '5mb'}));
+app.use(bParser.json({ limit: '5mb' }));
 
 app.use(bParser.urlencoded({ extended: true, limit: '5mb' }));
 
@@ -66,13 +66,13 @@ app.use(passport.initialize());
 app.get('/api/auth/login/github', function (req, res, next) {
   passport.authenticate('github', { session: false },
     function (err, user, token) {
-      if(token)
-      {
-      const jwtToken = token.split('.');
-      console.log(jwtToken);
-      return res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
+      if (token) {
+        const jwtToken = token.split('.');
+        console.log(jwtToken);
+        return res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
       }
-      else return res.status(200).send({auth: false});
+      // else return res.status(200).send({auth: false});
+      else return res.redirect(`http://localhost:8080/login/oAuth=false`)
       // .status(200).send({token: token})
     })(req, res, next);
 });
@@ -81,58 +81,54 @@ app.get('/api/auth/login/github', function (req, res, next) {
 app.get('/api/auth/login/42', function (req, res, next) {
   passport.authenticate('42', { session: false },
     function (err, user, token) {
-      if(token)
-      {
-      const jwtToken = token.split('.');
-      console.log(token);
-      console.log(jwtToken);
-      res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);  //res.status(200).send({token: token});
+      if (token) {
+        const jwtToken = token.split('.');
+        console.log(token);
+        console.log(jwtToken);
+        res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);  //res.status(200).send({token: token});
       }
-    else return res.status(200).send({auth: false});
+      else return res.status(200).send({ auth: false });
     })(req, res, next);
 });
 
 app.get('/api/auth/login/facebook', function (req, res, next) {
-  passport.authenticate('facebook', { session: false, scope: ['email']},
+  passport.authenticate('facebook', { session: false, scope: ['email'] },
     function (err, user, token) {
-      if(token)
-      {
-      const jwtToken = token.split('.');
-      console.log(token);
-      console.log(jwtToken);
-      res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
-    }
-    else return res.status(200).send({auth: false});
+      if (token) {
+        const jwtToken = token.split('.');
+        console.log(token);
+        console.log(jwtToken);
+        res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
+      }
+      else return res.status(200).send({ auth: false });
 
       //    res.status(200).send({token: token});
     })(req, res, next);
 });
 
-app.get('/api/auth/login/dropbox',function (req, res, next) {
-  passport.authenticate('dropbox-oauth2',  
-  function (err, user,token) {
-    if(token)
-    {
-    const jwtToken = token.split('.');
-    console.log(token);
-    console.log(jwtToken);
-    res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
-      //res.status(200).send({token: token});
-    } 
-    else return res.status(200).send({auth: false});
-  })(req, res, next);
+app.get('/api/auth/login/dropbox', function (req, res, next) {
+  passport.authenticate('dropbox-oauth2',
+    function (err, user, token) {
+      if (token) {
+        const jwtToken = token.split('.');
+        console.log(token);
+        console.log(jwtToken);
+        res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
+        //res.status(200).send({token: token});
+      }
+      else return res.status(200).send({ auth: false });
+    })(req, res, next);
 });
 
-app.get('/api/auth/login/linkedin',function (req, res, next) {
-  passport.authenticate('linkedin', function (err, user,token) {
-    if(token)
-    {
-    const jwtToken = token.split('.');
-    console.log(token);
-    console.log(jwtToken);
-    res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);  //res.status(200).send({token: token});
-  } 
-  else return res.status(200).send({auth: false});
+app.get('/api/auth/login/linkedin', function (req, res, next) {
+  passport.authenticate('linkedin', function (err, user, token) {
+    if (token) {
+      const jwtToken = token.split('.');
+      console.log(token);
+      console.log(jwtToken);
+      res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);  //res.status(200).send({token: token});
+    }
+    else return res.status(200).send({ auth: false });
   })(req, res, next);
 });
 var AuthController = require('./controllers/AuthController');
@@ -154,7 +150,7 @@ moviesCtrl.initMovies()
 
 moviesCtrl.deleteOld();
 
- 
+
 
 
 /**
