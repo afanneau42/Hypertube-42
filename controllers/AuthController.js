@@ -68,21 +68,18 @@ router.post('/register', [
     return res.status(200).json({ errors: errors.mapped() });
   }
 
- 
-
-
   // console.log(req.body.username);
   // if (!checkInput(req.body.password, req.body.emails))
   //   res.send(200, {err: true, err_msg: 'input invalid'});
   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
   
-  User.find({$or:[{'username': req.body.username,'email':req.body.email}]}, function (err, user) {
+  User.findOne({$or:[{'username': req.body.username},{'email':req.body.email}]}, function (err, user) {
     if (err) { return res.status(200).send({ auth:false,err:"There was a problem registering the user`." }); }
     if (user) { 
       return res.status(200).send({auth:false, err:"User already exists."}); 
     }
    if (!user) {
-      User.create({
+    User.create({
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
