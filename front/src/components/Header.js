@@ -16,7 +16,7 @@ class Header extends React.Component {
 
     componentDidUpdate() {
         const { jwtToken: token } = localStorage;
-        token ? this.props.dispatch(userActions.getInfoFromToken(token)) : console.log("NOT DONE");
+        token ? this.props.dispatch(userActions.getInfoFromToken(token)) : null;
     }
 
     konamiFunc = () => {
@@ -28,7 +28,7 @@ class Header extends React.Component {
     }
 
     handleRoot = () => {
-        console.log("HANDLE ROOOOOOOT")
+        // console.log("HANDLE ROOOOOOOT")
         this.props.dispatch(moviesActions.emptyMoviesList());
         this.props.dispatch(filtersActions.resetFilters());
     };
@@ -45,7 +45,7 @@ class Header extends React.Component {
     }
 
     render() {
-        console.log("RENDER");
+        // console.log("RENDER");
         const language = this.props.language;
 
         return (

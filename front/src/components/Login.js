@@ -23,7 +23,7 @@ class Login extends React.Component {
     }
 
     componentWillMount() {
-        console.log("hey there");
+        // console.log("hey there");
         if (!!localStorage.jwtToken) {
             history.push('/browse');
         }
@@ -68,8 +68,8 @@ class Login extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-        console.log(this.state);
+        // console.log(this.props);
+        // console.log(this.state);
         const { lang, error, login } = this.props;
         const url = 'http://localhost:3000/api';
         const { user } = this.state;

@@ -9,19 +9,16 @@ export default class VideoPlayer extends React.Component {
     // instantiate Video.js
     let { sources } = this.props
     this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
-      console.log('onPlayerReady', this)  
-        this.player().on('waiting', () => {
-          console.log('buffer');
-          this.player().controls(false)
-          
-          // controlBar.addClass('vjs-fade-out');
-        })
-        this.player().on('playing', () => {
-          console.log('playing');
-          this.player().controls(true)
-          
-        })          
-      });
+      this.player().on('waiting', () => {
+        this.player().controls(false)
+
+        // controlBar.addClass('vjs-fade-out');
+      })
+      this.player().on('playing', () => {
+        this.player().controls(true)
+
+      })
+    });
   }
 
 
@@ -37,9 +34,9 @@ export default class VideoPlayer extends React.Component {
   // so videojs won't create additional wrapper in the DOM
   // see https://github.com/videojs/video.js/pull/3856
   render() {
-    console.log(this.props);
+
     const url = `${config.connectUrl}/api/video/subtitles?movie_id=${this.props.movie_id}&imdb_id=${this.props.imdb_id}&lang=`;
-    console.log(url);
+
     return (
       <div className="vjs-container">
         <div data-vjs-player>

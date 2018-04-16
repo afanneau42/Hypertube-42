@@ -90,7 +90,6 @@ class Register extends React.Component {
     }
 
     if (!errors[0]) {
-      console.log("go action");
       this.props.dispatch(userActions.register(user));
     } else {
       this.setState({ errors });
@@ -100,12 +99,6 @@ class Register extends React.Component {
   getBase64 = file => {
     if (!file)
       return;
-    // if (btoa(atob(file)) !== file || !atob(file)) {
-    // if ()
-    //   const errors = []
-    //   errors.push("Cette error pue du cul");
-    //   this.setState({ errors })
-    // }
     else {
       const { user } = this.state;
       let reader = new FileReader();

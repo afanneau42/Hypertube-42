@@ -29,7 +29,7 @@ class Item extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
+        // console.log(nextProps)
         const { lang, translated } = nextProps.language;
         const { synopsis, genre, history } = nextProps.movie;
         const { synopsis: oldS, genre: oldG } = this.props.movie;
@@ -40,14 +40,14 @@ class Item extends Component {
         if (history !== undefined)
             this.setState({ ...this.state, views: history.length });
         if (this.state.badge === '' && nextProps.movie.torrents !== undefined) {
-            console.log("SEEDS", seeds)
+            // console.log("SEEDS", seeds)
             this.whatBadge({ seeds })
         }
         if (lang !== 'en' && !translated && a && b) {
             this.props.dispatch(getVersion(lang, { synopsis, genre }));
         }
         if (seeds && seeds > 200 && nextProps.movie.imdb_id != undefined && this.state.en_subs === false) {
-            console.log("COUCOU IMnextProps.DB", nextProps.movie.imdb_id)
+            // console.log("COUCOU IMnextProps.DB", nextProps.movie.imdb_id)
             const url = `${config.connectUrl}/api/video/subtitles?movie_id=${this.props.match.params.id}&imdb_id=${nextProps.movie.imdb_id}&lang=`;
             axios.get(url + 'ge').then((res) => {
 
@@ -60,16 +60,16 @@ class Item extends Component {
                     this.state.sp_subs !== undefined ? this.setState({ ...this.state, sp_subs: true }) : 0;
 
                 // this.setState({...this.state, sp_subs: true})
-            }).catch(e => console.log("ERREUR"))
+            }).catch()
             axios.get(url + 'en').then((res) => {
-                console.log('en', res)
+                // console.log('en', res)
                 if (res.data === 'OK' && this._ismounted)
                     this.state.en_subs !== undefined ? this.setState({ ...this.state, en_subs: true }) : 0;
 
                 // this.setState({...this.state, en_subs: true})
             }).catch()
             axios.get(url + 'fr').then((res) => {
-                console.log('fr', res)
+                // console.log('fr', res)
                 if (res.data === 'OK' && this._ismounted)
                     this.state.fr_subs !== undefined ? this.setState({ ...this.state, fr_subs: true }) : 0;
 
@@ -100,7 +100,7 @@ class Item extends Component {
     handlePostCom = e => {
         e.preventDefault();
         const { username, picture } = this.props.session;
-        console.log("profil data", username, picture);
+        // console.log("profil data", username, picture);
         if (this.state.comment !== '' && this.state.comment.length > 2) {
             this.props.dispatch(commentActions.postComment({
                 movie_id: this.props.match.params.id,
@@ -139,14 +139,13 @@ class Item extends Component {
             params: { movie_id: this.props.match.params.id }
         }
         axios(options)
-            .then((ret) => {
-                console.log("watch movie Axios", ret);
-            })
+            .then()
+            .catch()
     }
 
     handleChangeCom = (e) => {
         const { name, value } = e.target;
-        console.log(value.length)
+        // console.log(value.length)
         if (value.length < 250)
             this.setState({ [name]: value, commentError: '' })
         else

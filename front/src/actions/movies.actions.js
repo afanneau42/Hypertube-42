@@ -13,8 +13,6 @@ export const moviesActions = {
 }
 
 function getMovies(filters) {
-
-    console.log("MOVIE REGULAR");
     const {
         page,
         f_title,
@@ -63,7 +61,7 @@ function getFilteredMovie(filters) {
         suggest_pos,
         sort_order,
     } = filters;
-    console.table(filters)
+    // console.table(filters)
     // const url = `${config.apiUrl}/api/movies?page=${page}`
 
 
@@ -71,7 +69,7 @@ function getFilteredMovie(filters) {
     const url = f_suggest === '' ?
         `${config.apiUrl}/api/movies?page=${page}&f_suggest=${f_suggest}&sort_by=${sort_by}&sort_order=${sort_order}&f_title=${f_title}&f_rating_min=${f_rating_min}&f_rating_max=${f_rating_max}&f_year_min=${f_year_min}&f_year_max=${f_year_max}&f_genre=${f_genre}`
         : `${config.apiUrl}/api/movies?page=${page}&f_suggest=${f_suggest}&f_title=${f_title}&sort_by=${sort_by}&sort_order=${sort_order}`;
-    console.log(url);
+
     const options = {
         url,
         method: 'GET',
@@ -81,12 +79,10 @@ function getFilteredMovie(filters) {
     return dispatch => {
         dispatch({ type: moviesConstants.MOVIES_REQUEST });
 
-        console.log("GET FILTERED");
-        // console.log(url);
 
         axios(options)
             .then(res => {
-                console.log("GET RESPONSE FILTERED", res);
+
                 if (res.data.error)
                     disptach({ type: moviesConstants.MOVIES_FAILURE });
                 else {
@@ -113,7 +109,7 @@ function getMovieById(id) {
             });
             axios.get(`${config.apiUrl}/api/movies/byId?id=${id}`)
                 .then(res => {
-                    console.log("MOVIE ITEEEEEEEEM", res)
+
                     if (res.data.error)
                         dispatch({ type: moviesConstants.MOVIES_FAILURE })
                     const movieItem = res.data
@@ -123,7 +119,7 @@ function getMovieById(id) {
                         reload(id)
                     }
                 }).catch(e => {
-                    console.log("MOVIE ITEM ERROR", e)
+
                     dispatch({ type: moviesConstants.MOVIES_FAILURE })
                 })
         }

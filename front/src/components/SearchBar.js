@@ -13,28 +13,12 @@ class SearchBar extends React.Component {
     //Event handlers :
     handleKeyUp = (e) => {
         const search = e.target.value;
-        console.log(e.target.value);
         const { jwtToken: token } = localStorage;
         if (search === "")
             token ? this.props.dispatch(filtersActions.resetFilters()) : history.push('/login');
         else if (search.length < 30 && search.match(/^[a-zA-Z0-9_ ]*$/))
             token ? this.props.dispatch(filtersActions.setTitleFilter(search)) : history.push('/login');
-        //     const search = e.target.value
-        //     console.log(e.target.value);
-        //     console.log("SEARCH", search);
-        //     if (search === "")
-        //         this.props.dispatch(filtersActions.resetFilters());
 
-        //     else {
-        //         setTimeout(() => this.setState({ timeout: true }), 500)
-        //         if (this.state.timeout) {
-        //             this.props.dispatch(filtersActions.setTitleFilter(search)); 
-        //         }
-        //         // clearTimeout(timeout);
-        //         // console.log("After Clear", timeout);
-        //         // timeout = setTimeout(() => this.props.dispatch(filtersActions.setTitleFilter(search)), 2000);
-        //         // console.log("BEFORE CLEAR", timeout)
-        //     }
     }
 
 
@@ -64,7 +48,6 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        console.log("RENDER");
         const language = this.props.language;
         return (
             <div>

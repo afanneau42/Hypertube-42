@@ -39,7 +39,6 @@ class Personal extends React.Component {
                 subtitlesLanguage: language ? language : "en",
             }
         });
-        console.log("get session", nextProps.session);
     }
 
     componentWillMount() {
@@ -149,10 +148,6 @@ class Personal extends React.Component {
     handleUpload = e => {
         e.preventDefault();
         const file = this.uploadInput.files[0];
-        // if(file.type == ""){
-        //     errors.push(inter["fr"].register.tooLongueFirstname)
-        // }
-        console.log(file);
         this.getBase64(file);
 
 

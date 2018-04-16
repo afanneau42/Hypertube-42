@@ -41,7 +41,7 @@ export const getVersion = (lang, { synopsis, genre }) => {
           payload: res.map(genre => genre.data)
         })
       )
-      .catch(error => console.log());
+      .catch();
   };
 };
 ///api/translate?lang='les 2 premieres lettres de la langue'&str='le texte a traduire'

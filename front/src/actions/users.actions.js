@@ -25,16 +25,16 @@ function register(user) {
         dispatch(request());
         axios.post(`http://localhost:3000/api/auth/register`, user)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.auth === true) {
                     dispatch(success());
                     history.push('/login');
                 }
                 else {
                     const error = res.data.err
-                    console.log(error);
+                    // console.log(error);
                     dispatch(failure(error));
-                    console.log(res);
+                    // console.log(res);
                     // localStorage.setItem('jwtToken', token)
                 }
             })
@@ -50,7 +50,7 @@ function login({ username, password }) {
         axios.post(`${config.connectUrl}/api/auth/login`, { username, password })
             .then(res => {
                 const { token, auth } = res.data;
-                console.log(res);
+                // console.log(res);
                 if (auth === false || token === undefined)
                     dispatch(failure());
                 else {
@@ -78,7 +78,7 @@ function getInfoFromToken(token) {
         }
         axios(options)
             .then(res => {
-                console.log('INFO TOKEN DEBUGG', res);
+                // console.log('INFO TOKEN DEBUGG', res);
                 if (res.data.error)
                     dispatch({ type: "TOKEN_EMPTY" });
                 else {
@@ -98,13 +98,13 @@ function getInfoById(id) {
         console.log("GETINFOBYID : ", id);
         axios(`${config.connectUrl}/api/users/${id}`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 dispatch({
                     type: "INFO_FROM_ID",
                     item: { ...res.data }
                 })
             })
-            .catch(e => console.log("Un soucis ? getInfoById", e))
+            .catch()
     }
 }
 
@@ -122,7 +122,7 @@ function _delete(id) {
 }
 
 function updateUserInfos(id, user) {
-    console.log("ACTION UPDATE", user)
+    // console.log("ACTION UPDATE", user)
     const request = () => ({ type: userConstants.UPDATE_REQUEST });
     const success = (session) => ({ type: userConstants.UPDATE_SUCCESS, session });
     const failure = error => ({ type: userConstants.UPDATE_FAILURE, error });
@@ -138,11 +138,11 @@ function updateUserInfos(id, user) {
                 ...user
             }
         }
-        console.log('options', options)
+        // console.log('options', options)
         dispatch(request);
         axios(options)
             .then(res => {
-                console.log("Salut c'est ACTION", res.data);
+                // console.log("Salut c'est ACTION", res.data);
                 dispatch(success(res.data))
             })
             .catch(err => dispatch(failure(err)));
@@ -150,7 +150,7 @@ function updateUserInfos(id, user) {
 }
 
 function ForgottenPassword(email) {
-    console.log(email);
+    // console.log(email);
     // const url = `${config.connectUrl}/api/auth/forgot`
     const options = {
         'email': email,
@@ -159,12 +159,12 @@ function ForgottenPassword(email) {
     return dispatch => {
         axios.post(`${config.connectUrl}/api/auth/forgot`, options)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 if (res.data !== "Password updated")
                     dispatch({ type: "FORGOT_PASSWORD_ERROR", error: res.data });
                 else
                     dispatch({ type: "FORGOT_PASSWORD_SUCCESS", success: res.data })
-            }).catch(e => console.log(e))
+            }).catch()
     }
 }
 

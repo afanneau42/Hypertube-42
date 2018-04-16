@@ -13,12 +13,12 @@ function getCommentsByMovie(movie_id) {
         axios
             .get(url)
             .then(res => {
-                console.log("COMMENTS REPONSE BY MOVIE", res);
+                // console.log("COMMENTS REPONSE BY MOVIE", res);
                 if (res.data.error) {
-                    console.log("AND THERE WE ARE ALALA", res);
+                    // console.log("AND THERE WE ARE ALALA", res);
                     dispatch({ type: 'THERE_IS_NO_COMMENTS' })
                 }
-                else 
+                else
                     return res.data
             })
             .then(comments => {
@@ -46,7 +46,7 @@ function getCommentsByMovie(movie_id) {
 }
 
 function postComment({ movie_id, author_id, comment, username = 'Anonymous', picture = '/images/default_user.png' }) {
-    console.log('post comment');
+    // console.log('post comment');
     return dispatch => {
         const { jwtToken: token } = localStorage
         const options = {
@@ -58,12 +58,12 @@ function postComment({ movie_id, author_id, comment, username = 'Anonymous', pic
         }
         axios(options)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.error)
                     dispatch({ type: 'POST_COMMENT_FAILED', error: res.data.error });
                 else {
                     const content = { ...res.data, username, picture };
-                    console.log('comment action concat', content);
+                    // console.log('comment action concat', content);
                     dispatch({ type: 'POST_COMMENT_SUCCESS', content });
                 }
             }).catch()

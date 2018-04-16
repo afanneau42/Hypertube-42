@@ -41,8 +41,6 @@ class List extends React.Component {
     render() {
         const { language, justArrived, welcomeBack } = this.props
         const { moviesList: movies, error } = this.props.moviesState;
-
-        console.log(this.props.filters);
         return (
             <div>
                 {justArrived && <div className="alert alert-success">{inter[language].register.success}</div>}
