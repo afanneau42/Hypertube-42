@@ -35,7 +35,7 @@ class Item extends Component {
         const { synopsis: oldS, genre: oldG } = this.props.movie;
         const a = oldG !== undefined && oldS !== undefined ? true : false;
         const b = oldG === genre && oldS === synopsis ? true : false;
-        const { seeds } = nextProps.movie.torrents !== undefined ? nextProps.movie.torrents[0] : 0;
+        let { seeds } = nextProps.movie.torrents !== undefined ? nextProps.movie.torrents[0] : 0;
         if (history !== undefined)
             this.setState({ ...this.state, views: history.length });
         if (this.state.badge === '')
@@ -47,12 +47,12 @@ class Item extends Component {
             console.log("COUCOU IMnextProps.DB", nextProps.movie.imdb_id)
             const url = `${config.connectUrl}/api/video/subtitles?movie_id=${this.props.match.params.id}&imdb_id=${nextProps.movie.imdb_id}&lang=`;
             axios.get(url + 'ge').then((res) => {
-                console.log('ge', res)
+
                 if (res.data === 'OK' && this._ismounted)
                     this.state.ge_subs !== undefined ? this.setState({ ...this.state, ge_subs: true }) : 0;
             }).catch()
             axios.get(url + 'sp').then((res) => {
-                console.log('sp', res)
+
                 if (res.data === 'OK' && this._ismounted)
                     this.state.sp_subs !== undefined ? this.setState({ ...this.state, sp_subs: true }) : 0;
 

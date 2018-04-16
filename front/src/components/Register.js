@@ -100,15 +100,31 @@ class Register extends React.Component {
   getBase64 = file => {
     if (!file)
       return;
-
-    const { user } = this.state;
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      const picture = reader.result;
-      this.setState({ user: { ...user, picture } });
+    // if (btoa(atob(file)) !== file || !atob(file)) {
+    // if ()
+    //   const errors = []
+    //   errors.push("Cette error pue du cul");
+    //   this.setState({ errors })
+    // }
+    else {
+      const { user } = this.state;
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const picture = reader.result;
+        if (!picture.match(/^(data:image\/)[A-Za-z0-9+/=]/)) {
+          const errors = []
+          errors.push("Image format not valid");
+          this.setState({ errors })
+        } else
+          this.setState({
+            ...this.state,
+            user: { ...user, picture },
+            errors: []
+          });
+      };
     };
-  };
+  }
 
   handleUpload = e => {
     e.preventDefault();

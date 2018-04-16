@@ -30,7 +30,8 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        setTimeout(() => document.getElementsByClassName("alert")[0].style.display = "none", 3000);
+        if (document.getElementsByClassName("alert") !== undefined)
+            setTimeout(() => document.getElementsByClassName("alert")[0].style.display = "none", 3000);
     }
     handleChange = (e) => {
         const { name, value } = e.target;

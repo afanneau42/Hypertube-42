@@ -134,7 +134,15 @@ class Personal extends React.Component {
         reader.readAsDataURL(file);
         reader.onload = () => {
             const picture = reader.result;
-            this.setState({ edit: { ...edit, picture: picture } });
+            if (!picture.match(/^(data:image\/)[A-Za-z0-9+/=]/)) {
+                const errors = []
+                errors.push("Image format not valid");
+                this.setState({
+                    ...this.state,
+                    errors
+                })
+            } else
+                this.setState({ edit: { ...edit, picture: picture }, errors: [] });
         };
     };
 

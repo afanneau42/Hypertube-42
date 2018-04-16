@@ -26,12 +26,13 @@ function register(user) {
         axios.post(`http://localhost:3000/api/auth/register`, user)
             .then(res => {
                 console.log(res.data);
-                if (res.data.auth === true){
+                if (res.data.auth === true) {
                     dispatch(success());
                     history.push('/login');
                 }
                 else {
-                    dispatch(failure());
+                    const error = res.data.err
+                    dispatch(failure(res.data.err));
                     console.log(res.data);
                     // localStorage.setItem('jwtToken', token)
                 }
