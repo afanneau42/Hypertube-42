@@ -66,7 +66,7 @@ app.use(passport.initialize());
 app.get('/api/auth/login/github', function (req, res, next) {
   passport.authenticate('github', { session: false },
     function (err, user, token) {
-      if (token) {
+      if (token && token.split) {
         const jwtToken = token.split('.');
         console.log(jwtToken);
         return res.redirect(`http://localhost:8080/strategy/${jwtToken[0]}/${jwtToken[1]}/${jwtToken[2]}`);
@@ -81,7 +81,7 @@ app.get('/api/auth/login/github', function (req, res, next) {
 app.get('/api/auth/login/42', function (req, res, next) {
   passport.authenticate('42', { session: false },
     function (err, user, token) {
-      if (token) {
+      if (token && token.split) {
         const jwtToken = token.split('.');
         console.log(token);
         console.log(jwtToken);
@@ -95,7 +95,7 @@ app.get('/api/auth/login/42', function (req, res, next) {
 app.get('/api/auth/login/facebook', function (req, res, next) {
   passport.authenticate('facebook', { session: false, scope: ['email'] },
     function (err, user, token) {
-      if (token) {
+      if (token && token.split) {
         const jwtToken = token.split('.');
         console.log(token);
         console.log(jwtToken);
@@ -110,7 +110,7 @@ app.get('/api/auth/login/facebook', function (req, res, next) {
 app.get('/api/auth/login/dropbox', function (req, res, next) {
   passport.authenticate('dropbox-oauth2',
     function (err, user, token) {
-      if (token) {
+      if (token && token.split) {
         const jwtToken = token.split('.');
         console.log(token);
         console.log(jwtToken);
@@ -124,7 +124,7 @@ app.get('/api/auth/login/dropbox', function (req, res, next) {
 
 app.get('/api/auth/login/linkedin', function (req, res, next) {
   passport.authenticate('linkedin', function (err, user, token) {
-    if (token) {
+    if (token && token.split) {
       const jwtToken = token.split('.');
       console.log(token);
       console.log(jwtToken);
