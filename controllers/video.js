@@ -246,7 +246,8 @@ function streamExistingMovie(filePath, req, res) {
 }
 
 const getSubtitles = (req, res) => {
-    if (!req.query.lang || (req.query.lang !== 'en' && req.query.lang !== 'fr' && req.query.lang !== 'du' && req.query.lang !== 'sp') || !req.query.movie_id || !req.query.imdb_id)
+    console.log(req.get('User-Agent'))
+    if (!req.query.lang || (req.query.lang !== 'en' && req.query.lang !== 'fr' && req.query.lang !== 'du' && req.query.lang !== 'sp' && !req.get('User-Agent')[0] === 'M') || !req.query.movie_id || !req.query.imdb_id)
         res.send();
     else {
         if (fs.existsSync(path))
