@@ -25,7 +25,7 @@ const insertMultiple = (array) => {
             request(e.medium_cover_image, function (error, response, body) {
                 // console.log('error:', error); // Print the error if one occurred and handle it
                 // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-                if (response.statusCode == 200 ) {
+                if (response && response.statusCode == 200 ) {
                     Movies
                         .create({
                             title: e.title,
@@ -82,17 +82,17 @@ const requestSuggest = () => {
                                             .findByIdAndUpdate(doc[0]._id, { suggest_pos: i }, (err, doc) => {
                                                 if (err) throw err;
                                                 suggest_nb++;
-                                                console.log('Progress suggest :' + suggest_nb + '%');
+                                                console.log('Progress suggest :' + Math.round(suggest_nb/movie_nb * 100) + '%');
                                             });
                                     }
                                     else {
                                         suggest_nb++;
-                                        console.log('Progress suggest :' + suggest_nb + '%');
+                                        console.log('Progress suggest :' + Math.round(suggest_nb/movie_nb * 100) + '%');
                                     }
                                 }
                                 else {
                                     suggest_nb++;
-                                    console.log('Progress suggest :' + suggest_nb + '%');
+                                    console.log('Progress suggest :' + Math.round(suggest_nb/movie_nb * 100) + '%');
                                 }
                                 // else if (!err) {
                                 //     imdb.getById(data.results[0].imdbid, {
@@ -124,9 +124,11 @@ const requestSuggest = () => {
                     }
                     else {
                         suggest_nb++;
-                        console.log('Progress suggest :' + suggest_nb + '%');
+                        console.log('Progress suggest :' + Math.round(suggest_nb/movie_nb * 100) + '%');
                     }
                 }).catch(err => {
+                    suggest_nb++;
+                    console.log('Progress suggest :' + Math.round(suggest_nb/movie_nb * 100) + '%');
                 })
             })
         }).then(() => {
