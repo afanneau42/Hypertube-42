@@ -29,12 +29,13 @@ class Item extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
         const { lang, translated } = nextProps.language;
         const { synopsis, genre, history } = nextProps.movie;
         const { synopsis: oldS, genre: oldG } = this.props.movie;
         const a = oldG !== undefined && oldS !== undefined ? true : false;
         const b = oldG === genre && oldS === synopsis ? true : false;
-        const { seeds } = nextProps.movie.torrents[0];
+        const { seeds } = nextProps.movie.torrents !== undefined ? nextProps.movie.torrents[0] : 0;
         if (history !== undefined)
             this.setState({ ...this.state, views: history.length });
         if (this.state.badge === '')
