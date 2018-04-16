@@ -29,9 +29,9 @@ passport.use(new LinkedInStrategy({
   }, function(accessToken, refreshToken, profile, done) {
     // console.log(profile);
     let newUser = {
-        email: profile._json.emailAddress,
-        firstname: profile._json.firstName,
-        lastname: profile._json.lastName,
+        email: profile._json.emailAddress.replace(" ",""),
+        firstname: profile._json.firstName.replace(" ",""),
+        lastname: profile._json.lastName.replace(" ",""),
         username: profile._json.formattedName.replace(" ",""),
         picture: profile._json.pictureUrl,
         linkedinid: profile._json.id,
@@ -60,9 +60,9 @@ passport.use(new DropboxOAuth2Strategy({
   },
   function(accessToken, refreshToken, profile, done) {
     let newUser = {
-        email: profile._json.email,
-        firstname: profile._json.name.given_name,
-        lastname: profile._json.name.surname,
+        email: profile._json.email.replace(" ",""),
+        firstname: profile._json.name.given_name.replace(" ",""),
+        lastname: profile._json.name.surname.replace(" ",""),
         username: profile._json.name.display_name.replace(" ",""),
         dropboxid: profile.id,
         provider: 'dropbox'
@@ -92,9 +92,9 @@ passport.use(new FacebookStrategy({
       var name = profile._json.name;
 var fname = name.split(" ");
     let newUser = {
-        email: profile._json.email,
-        firstname: fname[0],
-        lastname: fname[1],
+        email: profile._json.email.replace(" ",""),
+        firstname: fname[0].replace(" ",""),
+        lastname: fname[1].replace(" ",""),
         username: profile._json.name.replace(" ",""),
         facebookid: profile._json.id,
         provider: 'facebook'
@@ -123,10 +123,10 @@ passport.use(new GitHubStrategy({
     var name = profile._json.name;
     var fname = name.split(" ");
     let newUser = {
-        email: profile._json.email,
-        username: profile._json.login,
-        firstname: fname[0],
-        lastname: fname[1],
+        email: profile._json.email.replace(" ",""),
+        username: profile._json.login.replace(" ",""),
+        firstname: fname[0].replace(" ",""),
+        lastname: fname[1].replace(" ",""),
         picture: profile._json.avatar_url,
         githubid: profile._json.id,
         provider: 'github'
@@ -154,10 +154,10 @@ passport.use(new FortyTwoStrategy({
 function (accessToken, refreshToken, profile, cb) {
     // console.log(profile);    
     let newUser = {
-        email: profile._json.email,
-        username: profile._json.login,
-        firstname: profile._json.first_name,
-        lastname: profile._json.last_name,
+        email: profile._json.email.replace(" ",""),
+        username: profile._json.login.replace(" ",""),
+        firstname: profile._json.first_name.replace(" ",""),
+        lastname: profile._json.last_name.replace(" ",""),
         picture: profile._json.image_url,
         fortytwoid: profile._json.id,
         provider: '42'

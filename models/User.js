@@ -4,13 +4,17 @@ var findOrCreate = require('mongoose-findorcreate')
 var UserSchema = new mongoose.Schema({
     username: {
         type: String,
+        lowercase: true,
         required: true        
     },
     firstname: {
         type: String,
+        lowercase: true        
     },
     lastname: {
-        type: String,        
+        type: String, 
+        lowercase: true
+              
     },
     email: {
         type: String,

@@ -79,8 +79,9 @@ router.post('/register', [
   User.find({$or:[{'username': req.body.username,'email':req.body.email}]}, function (err, user) {
     if (err) { return res.status(200).send({ auth:false,err:"There was a problem registering the user`." }); }
     if (user) { 
-      return res.status(200).send({auth:false, err:"User already exists."}); }
-    if (!user) {
+      return res.status(200).send({auth:false, err:"User already exists."}); 
+    }
+   if (!user) {
       User.create({
         username: req.body.username,
         firstname: req.body.firstname,
