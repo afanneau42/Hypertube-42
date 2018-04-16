@@ -35,11 +35,14 @@ class Item extends Component {
         const { synopsis: oldS, genre: oldG } = this.props.movie;
         const a = oldG !== undefined && oldS !== undefined ? true : false;
         const b = oldG === genre && oldS === synopsis ? true : false;
-        let { seeds } = nextProps.movie.torrents !== undefined ? nextProps.movie.torrents[0] : 0;
+
+        const { seeds } = nextProps.movie.torrents !== undefined ? nextProps.movie.torrents[0] : 0;
         if (history !== undefined)
             this.setState({ ...this.state, views: history.length });
-        if (this.state.badge === '')
+        if (this.state.badge === '' && nextProps.movie.torrents !== undefined) {
+            console.log("SEEDS", seeds)
             this.whatBadge({ seeds })
+        }
         if (lang !== 'en' && !translated && a && b) {
             this.props.dispatch(getVersion(lang, { synopsis, genre }));
         }
