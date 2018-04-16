@@ -115,6 +115,22 @@
     z-index: -2;
 }
 
+.not_enough_seeder {
+    margin: auto;
+    color: #8a0000;
+}
+
+.views_count {
+    font-size: 1em;
+    font-style: italic;
+    margin-top: 10px;
+    text-align: center;
+    color: #aeaeae;
+    border-bottom: solid 2px;
+    border-radius: 100%;
+    opacity: 0.8;
+}
+
 @media screen and (max-width : 992px) {
     .item {
         padding-left: 8vw; 

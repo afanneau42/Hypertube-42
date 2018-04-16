@@ -194,7 +194,7 @@ class Item extends Component {
                                 onError={(e) => e.target.src = '/images/default-movie.png'}
                                 className="movie_image" src={movie.cover_image} alt={movie.title}
                             />
-                            <p style={{ fontSize: "1em", fontStyle: "italic" }}>
+                            <p className="views_count">
                                 {`${views}${views > 1000 ? 'k' : ''} ${inter[lang].itemPage.views}${views > 1 ? lang === 'de' ? 'en' : 's' : ''}`}
                             </p>
                         </div>
@@ -235,7 +235,7 @@ class Item extends Component {
 
                                 this.state.quality === inter[lang].itemPage.slow ?
                                     <div className="div_movie_watch_link">
-                                        <span>Not enough seeders 🙈</span>
+                                        <span className="not_enough_seeder">Not enough seeders 🙈</span>
                                     </div>
                                     :
                                     <div className="div_movie_watch_link">
