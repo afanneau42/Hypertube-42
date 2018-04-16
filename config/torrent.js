@@ -1,14 +1,25 @@
 const pathMod = require('path');
 const fs = require('fs');
 
-let path =  pathMod.resolve('/tmp');
+let path = pathMod.resolve('/goinfre') ? pathMod.resolve('/goinfre') : pathMod.resolve('/tmp');
 path += '/ht_storage';
+
 if (!fs.existsSync(path)) {
     fs.mkdirSync(path);
     console.log('Storage created at :', path);    
 }
 else 
     console.log('Storage located at :', path);
+
+let pathSubs = pathMod.resolve('./front/public')
+pathSubs += '/subs'
+
+if (!fs.existsSync(pathSubs)) {
+    fs.mkdirSync(pathSubs);
+    console.log('Subs storage created at :', pathSubs);    
+}
+else 
+    console.log('Subs storage located at :', pathSubs);
 
 module.exports = {
     connections: 100,
