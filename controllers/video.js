@@ -297,7 +297,7 @@ const downloadSubtitles = (lang, imdb_id, res) => {
             if (err) throw err
             fs.createReadStream('/tmp/' + filename + '.srt')
                 .pipe(srt2vtt())
-                .pipe(fs.createWriteStream('/front/public/subs/' + filename + '.vtt'))
+                .pipe(fs.createWriteStream('front/public/subs/' + filename + '.vtt'))
             res.send('OK');
         })
 
