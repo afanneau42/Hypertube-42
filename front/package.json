@@ -12,6 +12,7 @@
     "dev-server": "webpack-dev-server"
   },
   "dependencies": {
+    "3": "^2.1.0",
     "axios": "^0.18.0",
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
